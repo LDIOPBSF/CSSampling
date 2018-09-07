@@ -47,7 +47,7 @@ def compareElem2(tuple1,tuple2):
 def trier(matrice):
 	return sorted(matrice, key = functools.cmp_to_key(compareElem2))
 
-#################################### the main function ##########################
+#################################### the main program ##########################
 
 baseSequence=sys.argv[1] #the complete path of the dataset
 k,N=0,int(sys.argv[2]) # N is the size of the sample
@@ -56,8 +56,8 @@ indiceClass=int(sys.argv[4]) # the index of the attribute to predict
 
 
 tmps21=time.clock()
-contenuBaseSequence=contenuDeMaBase(baseSequence)
-result =maBasePonderee(contenuBaseSequence,tailleMax,indiceClass)
+contenuBaseSequence=contenuDeMaBase(baseSequence) #loading the dataset
+result =maBasePonderee(contenuBaseSequence,tailleMax,indiceClass) #ponderation of the sequences database
 
 
 tmps22=time.clock()-tmps21
@@ -72,7 +72,7 @@ nombreDeRejet,c_accept, c_rejet=0,0,0
 tableauPhiSequence,tableauNbApparitionSequence=[],[]
 i=0
 
-
+# Sampling N patterns
 while i<N:
 	mesValParam=BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonderee,c_accept, c_rejet,tabSigma,tailleMax,indiceClass)
 	nombreDeRejet,c_accept, c_rejet=mesValParam[0],mesValParam[1],mesValParam[2]
@@ -82,7 +82,7 @@ tmps22=time.clock()-tmps21
 print ("Duree tirage = "), tmps22
 tmps2=time.clock()-tmps1
 
-#output
+#output. We take the Samples as output folder by default
 relation=baseSequence.split("\\")[1].split(".")[0]
 ficSample=""
 for i in range(len(EnsSousSequence)):
