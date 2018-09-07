@@ -12,12 +12,12 @@ import random
 
 
 
-#somme des pondérations des séquences de la base
+# sum of the weightings of the sequences' database
 def sommePonderation(maBP):
 	return sum(maBP)
 
 
-#tirage aléatoire d'une séquence
+#Random draw of a sequence according to its weight
 def tirageSequence(contenuBaseSequence,basePonderee,tabSigma):
 	i,nbSeq=0,len(contenuBaseSequence)
 	somme=tabSigma[nbSeq-1]
