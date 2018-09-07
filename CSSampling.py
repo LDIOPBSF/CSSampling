@@ -83,20 +83,18 @@ while i<N:
 
 tmps22=time.clock()-tmps21
 print ("Duree tirage = "), tmps22
+tmps2=time.clock()-tmps1
 
 #output
-	relation=baseSequence.split("\\")[1].split(".")[0]
-	ficSample=""
-	for i in range(len(EnsSousSequence)):
-		ficSample=ficSample+EnsSousSequence[i]+"-2\n"
-	
-	print ("Taux d'acceptation reel : "),float(N)/(N+nombreDeRejet)
-	with open('Samples/'+str(tailleMax)+'_'+relation+'_'+str(N)+'.txt', 'w') as fic:
-		fic.write(ficSample)
+relation=baseSequence.split("\\")[1].split(".")[0]
+ficSample=""
+for i in range(len(EnsSousSequence)):
+	ficSample=ficSample+EnsSousSequence[i]+"-2\n"
 
-tmps2=time.clock()-tmps1
+print ("Taux d'acceptation reel : "),float(N)/(N+nombreDeRejet)
+with open('Samples/'+str(tailleMax)+'_'+relation+'_'+str(N)+'.txt', 'w') as fic:
+	fic.write(ficSample)
 print ("################## Duree totale d'execution D = "), tmps2
 			
 print ("************************************************* ")
 
-#CSSampling.py dataset N M indiceClass
