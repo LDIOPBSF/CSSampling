@@ -15,7 +15,7 @@ tmps1=time.clock()
 
 delimiteurItemset='-1'
 
-#Transformer la séquence en un tableau d'itemsets
+# Transform the sequence into an array of itemsets
 def tableauItemset(sequence):
 	sequence=sequence[:-3]
 	return sequence.split(delimiteurItemset+' ')
