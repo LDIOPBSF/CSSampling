@@ -14,20 +14,12 @@ from tableauItemset import *
 from loadData import *
 from mpmath import mpf
 
-
-#Récupération du nom de la base passé en argument
-#baseSequence=sys.argv[1]
-
-
-#contenuBaseSequence=contenuDeMaBase(baseSequence)
-#basePonderee=maBasePonderee(contenuBaseSequence)
-#print "Nombre de sequences dans la base ",len(basePonderee)
 	
-#pile ou face
+#Randomisation, return 0 or 1
 def pile():
 	return (random.randint(0,1)==1)
 
-#itemset1 privé de l'itemset2
+#itemset1 deprivated itemset2
 def prive(itemset1,itemset2,indiceClass):
 	p,k=0,1
 	if indiceClass>0:
@@ -43,7 +35,7 @@ def prive(itemset1,itemset2,indiceClass):
 			itemset.append(item)
 	return ' '.join(itemset)+' '
 
-
+# Random draw of an integer k according the probability P(k)
 def k_norme(tabNorme):
 	tab=[]
 	som=0
@@ -59,7 +51,7 @@ def k_norme(tabNorme):
 	
 
 
-#Tirage aléatoire d'une sous-séquence
+# Uniform draw of a sub-sequence by rejection
 def sousSequence(sequence2, nombreDeRejet,tabNorme,indiceClass):
 	#print "sequence2",sequence2
 	#print "**********************"
@@ -150,7 +142,7 @@ def priveXdansT(X,T):
 	return [e for e in T if e not in X]
 
 
-#Génération d'une sous-séquence de la séquance tirée aléatoirement dans la base de séquence
+#Generation of a subsequence of the sequence drawn randomly in the sequence database
 def BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonderee, c_accept, c_rejet,tabSigma,tailleMax,indiceClass):
 	SousSeq_Ind=tirageSequence(contenuBaseSequence,basePonderee,tabSigma)
 	maSequence=tableauItemset(SousSeq_Ind[0])
@@ -185,7 +177,7 @@ def BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonde
 	return [nombreDeRejet,c_accept, c_rejet]
 
 
-#Inclusion entre itemsets de séquences sachant que les items sont ordonnés
+# Inclusion test between itemsets of sequences knowing that items are ordered
 def inclus(itemset1, itemset2):
 	itemset1=itemset1.split(' ')
 	itemset2=itemset2.split(' ')
@@ -195,7 +187,7 @@ def inclus(itemset1, itemset2):
 	return True
 	
 
-#Est-ce une sous-séquence d'une séquence
+#Test if a pattern is a sub-sequence of a given sequence
 def EstSousSequence(sousSeq, sequence, indiceClass):
 	tab1=sousSeq.split(' -1 ')[:-1]
 	tab2=sequence.split(' -1 ')[:-1]
@@ -214,7 +206,7 @@ def EstSousSequence(sousSeq, sequence, indiceClass):
 	return ok==True
 	
 
-#Support cardinal
+#Compute of the cardinal support
 def supportCardinal(contenuBaseSequence,sousSequence,indiceClass):
 	#if len(sousSequence)<3: print sousSequence
 	som=0
@@ -225,12 +217,12 @@ def supportCardinal(contenuBaseSequence,sousSequence,indiceClass):
 	#print som
 	return som
 
-#Fréquence
+#Compute of the relative frequency
 def frequence(contenuBaseSequence,sousSequence,indiceClass):
 	return float(supportCardinal(contenuBaseSequence,sousSequence,indiceClass))/len(contenuBaseSequence)
 
 
-#Norme d'une séquence à partir de sa forme brute, ex : 12 2 -1 3 5 -1 
+#Norm of a sequence from its raw form, e.g : 12 2 -1 3 5 -1 
 def norme(sequence):
 	sequence=sequence.replace('-1 ', '').split(' ')[:-1]
 	som=0
@@ -239,7 +231,7 @@ def norme(sequence):
 			som+=1
 	return som
 
-#Norme d'une séquence à partir de son tableau d'itemsets correspondant 
+#Norm of a sequence from its corresponding array of itemsets 
 def normeTabItemset(tabItemset):
 	sequence='-1 '.join(tabItemset).replace('-1 ', '').split(' ')[:-1]
 	som=0
@@ -256,7 +248,7 @@ def sommeComb(contenuBaseSequence,i,k1,k2):
 	return val
 
 
-#Nombre moyen de tirages
+#average number of draws
 def nombreMoyenDeTirages(contenuBaseSequence,basePonderee,tabSigma,k1,k2):
 	tmps1=time.clock()
 	LongueurBase,i =len(contenuBaseSequence),0
@@ -275,17 +267,3 @@ def nombreMoyenDeTirages(contenuBaseSequence,basePonderee,tabSigma,k1,k2):
 
 
 ######################################################
-                
-                            
-                            
-def toArff(contenuBaseSequence, mesAttributs, arffData, indiceClass, classAtt):
-    for sequence in contenuBaseSequence:
-        seq=sequence.split(' -1 ')
-        for s in mesAttributs:
-            if EstSousSequence(s,sequence,indiceClass)==True:
-                arffData=arffData+"1,"
-            else:
-                arffData=arffData+"0,"
-        arffData=arffData+"'"+seq[indiceClass]+"'"+'\n'
-        classAtt.add(seq[indiceClass])           
-    return [arffData, classAtt]
