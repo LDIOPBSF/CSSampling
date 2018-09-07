@@ -1,6 +1,6 @@
 # Sequential Pattern Sampling with Norm Constraints
 
-The CSSampling repository contains the materials concerning our paper : Sequential Pattern Sampling with Norm Constraints. There are three folders and six python files.
+The CSSampling repository contains the materials concerning our paper : Sequential Pattern Sampling with Norm Constraints. There are essentially three folders and six python files.
 - Data : contains the synthetic datasets built with the IBM Generator.
 - Samples : contains some results of the output sampling with the synthetic datasets
 - DistributionMotifsFrequence : contains the experimental result of the distribution of the patterns produced by CSSampling according the frequency
