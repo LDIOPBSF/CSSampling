@@ -13,12 +13,12 @@ from math import log
 import time
 
 
-#Norme d'une séquence à partir de son tableau d'itemsets correspondant 
+#Norm of a sequence from its corresponding array of itemsets 
 def normeTabItemset(tabItemset):
 	sequence='-1 '.join(tabItemset).replace('-1 ', '').split()#[:-1]
 	return len(sequence)
 
-#Intersection de deux itemsets
+#Intersection of two itemsets
 def intersection(itemset1,itemset2):
     itemset1=itemset1.split()#[:-1]
     itemset2=itemset2.split()#[:-1]
@@ -50,7 +50,7 @@ def positionSet(sequence, itemset):
 	return ps
 
 
-#l'ensemble des sous-ensembles possible d'un ensemble
+#Set of all subset of a given set
 def lamine(ens):
     p = []
     i, imax = 1, 2**len(ens)-1
@@ -65,12 +65,12 @@ def lamine(ens):
         i += 1 
     return p
 
-#séquence formée par les itemsets des indices de 0..k
+#sequence formed by the itemsets of the index of 0..k
 def prefixe(sequence,k):
 	return sequence[:-(len(sequence)-1-k)]
 
 
-#Taille d'un itemset
+#Size of an itemset
 def tailleItemset(itemset):
 	return len(itemset.split(' ')[:-1])
 
@@ -96,14 +96,14 @@ def prefix(seq,itemset):
 
 
 
-#une séquence privée de son dernier itemset
+# A deprivate sequence of his last itemset
 def moinsDernierItemset(sequence):
 	return sequence[:-1]
 
 def nbItems(itemset):
 	return len(itemset.split(' ')[:-1])
 
-#nombre de sous-séquences d'une séquence Crible d'Al'Amine
+# Number of sub-sequence of norm smaller or equal to k of a given sequence
 def phi_k(sequence,k):
 	if k==0 or sequence==[]:
 		return [[1]]
@@ -134,7 +134,7 @@ def phi_k(sequence,k):
 			M.append(T)
 	return M
 
-
+#the correction term
 def termeCorrecteurLDIOPBSF(M,sequence, itemset,k):
 	ps=positionSet(sequence, itemset)
 	sousEnsPS=lamine(ps)
@@ -160,7 +160,7 @@ def termeCorrecteurLDIOPBSF(M,sequence, itemset,k):
 		i-=1
 	return termCorrec
 
-
+# Number of combinations of n objects taken k to k
 def combin(n, k):
 	"""Nombre de combinaisons de n objets pris k a k"""
 	if k>n or n==0: return 0 #LDIOPBSF
