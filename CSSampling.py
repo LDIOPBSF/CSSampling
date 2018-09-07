@@ -13,15 +13,14 @@ import functools
 from sousSequence import *
 import time
 
-
+#It requires 4 arguments before running
 if len(sys.argv) < 4:
 	print( "Erreur d'entrée!")
 	sys.exit()
 
+############################## Some functions ############################
 
-#Trier deux tableau tab1 et tab2 tel que tab1[i]~tab2[i] pour tout i
-
-
+#Sort two tables tab1 and tab2 as tab1[i]~tab2[i] for all i
 def triSelection(tab1,tab2):
 	tab=[]
 	tailleTab = len(tab1)
@@ -42,20 +41,18 @@ def compare(x,y):
 	if x==y: return 0
 	if x>y: return 1
 
-
 def compareElem2(tuple1,tuple2):
 	return compare(tuple1[0],tuple2[0])
 
 def trier(matrice):
 	return sorted(matrice, key = functools.cmp_to_key(compareElem2))
 
+#################################### the main function ##########################
 
-mesValeurs=""
-
-baseSequence=sys.argv[1]
-k,N=0,int(sys.argv[2])
-tailleMax=int(sys.argv[3])	
-indiceClass=int(sys.argv[4])
+baseSequence=sys.argv[1] #the complete path of the dataset
+k,N=0,int(sys.argv[2]) # N is the size of the sample
+tailleMax=int(sys.argv[3]) # the maximun norm constrain
+indiceClass=int(sys.argv[4]) # the index of the attribute to predict
 
 
 tmps21=time.clock()
