@@ -3,7 +3,7 @@
 The CSSampling repository contains the materials concerning our paper : Sequential Pattern Sampling with Norm Constraints. There are essentially three folders and six python files.
 - Data : contains the synthetic datasets built with the IBM Generator.
 - Samples : contains some results of the output sampling with the synthetic datasets
-- DistributionMotifsFrequence : contains the experimental result of the distribution of the patterns produced by CSSampling according the frequency
+- DistributionMotifsFrequence : contains the experimental results of the distribution of the patterns produced by CSSampling according to frequency
 - The python files are the project code
 - cmdrun.txt contains the command line to use when you want to run the application
 
