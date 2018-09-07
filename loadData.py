@@ -17,7 +17,7 @@ delimiteurSequence='-2 '
 
 #tailleMax=int(sys.argv[3])
 
-#Lecture de la base de séquences
+#Read the sequences dataset
 def contenuDeMaBase(baseSequence):
 	with open(baseSequence, 'r') as base:
 		contenu=base.read()
@@ -28,7 +28,7 @@ def contenuDeMaBase(baseSequence):
 	#print "bsf",contenu
 	return contenu
 
-#Pondération des des séquences de la base par la cardinalité de leur nombre de sous-séquences distinctes
+# Weighting of the sequences' database by the cardinality of their number of distinct sub-sequences
 def maBasePonderee(contenuDeMaBase,tailleMax,indiceClass):
 	basePonderee,tabSigma,som,ponderation=[],[],0,{}
 	i=1
@@ -54,7 +54,7 @@ def maBasePonderee(contenuDeMaBase,tailleMax,indiceClass):
 
 delimiteurItemset='-1'
 
-#Transformer la séquence en un tableau d'itemsets
+#Transform the sequence into an array of itemsets
 def tableauItemset1(sequence,indiceClass):
 	k,p=1,0
 	if indiceClass>0:
