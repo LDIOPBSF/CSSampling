@@ -5,7 +5,7 @@ The CSSampling repository contains the materials concerning our paper : Sequenti
 - Samples : contains some results of the output sampling with the synthetic datasets
 - DistributionMotifsFrequence : contains the experimental results of the distribution of the patterns produced by CSSampling according to frequency
 - The python files are the project code
-- cmdrun.txt contains the command line to use when you want to run the application
+- cmdrun.txt contains the command line to use when one wants to run the application
 
 # Abstract
 In recent years, the field of pattern mining has shifted to user-centered methods. In such a context, it is necessary
