@@ -1,8 +1,10 @@
 # Sequential Pattern Sampling with Norm Constraints
 
-Lamine Diop, Cheikh Talibouya Diop, Arnaud Giacomettiy, Dominique Liy and Arnaud Soulety
-University Gaston-Berger of Saint-Louis, Senegal, diop.lamine3@ugb.edu.sn and cheikh-talibouya.diop@ugb.edu.sn
-yUniversity of Tours, France, firstname.lastname@univ-tours.fr
+Lamine Diop (1), Cheikh Talibouya Diop (1), Arnaud Giacomettiy (2), Dominique Li (2) and Arnaud Soulet (2)
+
+(1) University Gaston-Berger of Saint-Louis, Senegal, diop.lamine3@ugb.edu.sn and cheikh-talibouya.diop@ugb.edu.sn
+
+(2) University of Tours, France, firstname.lastname@univ-tours.fr
 
 The CSSampling repository contains the materials concerning our paper : Sequential Pattern Sampling with Norm Constraints. There are essentially three folders and six python files.
 - Data : contains the synthetic datasets built with the IBM Generator.
