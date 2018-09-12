@@ -29,4 +29,5 @@ procedure, named CSSampling, that randomly draws sequential patterns according t
 # Keywords
 Pattern Mining, Pattern Sampling, Sequential Data
 
-#Experimental Study
+# Experimental Study
+![alt text](https://github.com/LDIOPBSF/CSSampling/Images/CSSampling algorithm)
