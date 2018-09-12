@@ -35,4 +35,4 @@ Pattern Mining, Pattern Sampling, Sequential Data
 ![alt text](https://github.com/LDIOPBSF/CSSampling/blob/master/Images/CSSampling%20algorithm%20_%20Subsequence%20counting.PNG)
 # Experimental Study
 ![alt text](https://github.com/LDIOPBSF/CSSampling/blob/master/Images/CSSampling%20_%20Distribution%20of%20sequential%20patterns.PNG)
-![alt text](https://github.com/LDIOPBSF/CSSampling/blob/master/Images/CSSampling _ accuracy.PNG)
+![alt text](https://github.com/LDIOPBSF/CSSampling/blob/master/Images/CSSampling%20_%20accuracy.PNG)
