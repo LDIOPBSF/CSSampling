@@ -6,6 +6,9 @@ Lamine Diop (1), Cheikh Talibouya Diop (1), Arnaud Giacomettiy (2), Dominique Li
 
 (2) University of Tours, France, firstname.lastname@univ-tours.fr
 
+ICDM 2018 IEEE International Conference on Data Mining,
+The world’s premier research conference in data mining
+
 The CSSampling repository contains the materials concerning our paper : Sequential Pattern Sampling with Norm Constraints. There are essentially three folders and six python files.
 - Data : contains the synthetic datasets built with the IBM Generator.
 - Samples : contains some results of the output sampling with the synthetic datasets
