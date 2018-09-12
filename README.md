@@ -29,7 +29,10 @@ procedure, named CSSampling, that randomly draws sequential patterns according t
 # Keywords
 Pattern Mining, Pattern Sampling, Sequential Data
 
-# Experimental Study
+# Algorithm of CSSampling
 ![alt text](https://github.com/LDIOPBSF/CSSampling/blob/master/Images/CSSampling%20algorithm.PNG)
-
+# Theorem for calculating the number of subsequences in a sequence having a norm between m and M
 ![alt text](https://github.com/LDIOPBSF/CSSampling/blob/master/Images/CSSampling%20algorithm%20_%20Subsequence%20counting.PNG)
+# Experimental Study
+![alt text](https://github.com/LDIOPBSF/CSSampling/blob/master/Images/CSSampling%20_%20Distribution%20of%20sequential%20patterns.PNG)
+![alt text](https://github.com/LDIOPBSF/CSSampling/blob/master/Images/CSSampling _ accuracy.PNG)
