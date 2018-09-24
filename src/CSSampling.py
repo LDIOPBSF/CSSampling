@@ -53,7 +53,7 @@ baseSequence=sys.argv[1] #the complete path of the dataset
 k,N=0,int(sys.argv[2]) # N is the size of the sample
 tailleMax=int(sys.argv[3]) # the maximun norm constrain
 indiceClass=int(sys.argv[4]) # the index of the attribute to predict
-
+tailleMin = 1
 
 tmps21=time.clock()
 contenuBaseSequence=contenuDeMaBase(baseSequence) #loading the dataset
@@ -74,7 +74,7 @@ i=0
 
 # Sampling N patterns
 while i<N:
-	mesValParam=BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonderee,c_accept, c_rejet,tabSigma,tailleMax,indiceClass)
+	mesValParam=BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonderee,c_accept, c_rejet,tabSigma, tailleMax,tailleMin, indiceClass)
 	nombreDeRejet,c_accept, c_rejet=mesValParam[0],mesValParam[1],mesValParam[2]
 	i+=1
 
