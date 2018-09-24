@@ -52,7 +52,7 @@ def k_norme(tabNorme):
 
 
 # Uniform draw of a sub-sequence by rejection
-def sousSequence(sequence2, nombreDeRejet,tabNorme,indiceClass):
+def sousSequence(sequence2, nombreDeRejet,tabNorme,indiceClass, tailleMin):
 	#print "sequence2",sequence2
 	#print "**********************"
 	#normeSeq=normeTabItemset(sequence2)
@@ -66,7 +66,7 @@ def sousSequence(sequence2, nombreDeRejet,tabNorme,indiceClass):
 		indiceClass=len(maSeq)-1
 	Tab[:]=[i for i in range(len(maSeq)) if str(maSeq[i])!='-1' and i!=indiceClass]
 	#print ('Tab',Tab)
-	x=k_norme(tabNorme)#identite(min(tailleMax,normeSeq))
+	x=k_norme(tabNorme) + Math.max(0, tailleMin-1)	#identite(min(tailleMax,normeSeq))
 	#print 'x,normeSeq',x,normeSeq
 	T,L=[],[]
 	while rejet==True:
@@ -143,7 +143,7 @@ def priveXdansT(X,T):
 
 
 #Generation of a subsequence of the sequence drawn randomly in the sequence database
-def BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonderee, c_accept, c_rejet,tabSigma,tailleMax,indiceClass):
+def BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonderee, c_accept, c_rejet,tabSigma,tailleMax, tailleMin,indiceClass):
 	SousSeq_Ind=tirageSequence(contenuBaseSequence,basePonderee,tabSigma)
 	maSequence=tableauItemset(SousSeq_Ind[0])
 	M=SousSeq_Ind[1] #phi_k(maSequence,tailleMax)
@@ -151,7 +151,7 @@ def BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonde
 	#print "SousSeq_Ind[1]",SousSeq_Ind[1]
 	#print(maSequence),len(maSequence)
 	#print(M[len(M)-1][1:])
-	result=sousSequence(maSequence,nombreDeRejet,M[len(M)-1][1:],indiceClass)
+	result=sousSequence(maSequence,nombreDeRejet,M[len(M)-1][1:],indiceClass, tailleMin)
 	maSousSequence=result[0]
 	nombreDeRejet=result[1]
 	c_accept+=result[2]
