@@ -108,6 +108,47 @@ def phi_k(sequence,k):
 	if k==0 or sequence==[]:
 		return [[1]]
 	else:
+		nt=normeTabItemset(sequence)
+		k=min(k,nt)
+		T=[[1],[1]]
+		R=[[0],[0]]
+		for i in range(1,k+1):
+			T[0].append(1)
+			T[1].append(T[1][i-1]+combin(nbItems(sequence[0]),i))
+			R[0].append(0)
+			R[1].append(0)
+		for i in range(2,len(sequence)+1):
+			nbI=nbItems(sequence[i-1])
+			R.append([0])
+			T.append([1])
+			ps=positionSet(sequence[:i-1], sequence[i-1])
+			sousEnsPS=lamine(ps)
+			for j in range(1,k+1):
+				T[i].append(int(0))
+				R[i].append(int(0))
+				for u in range(len(sousEnsPS)):
+					intersecMulti=sequence[:i-1][sousEnsPS[u][0]]
+					v=1
+					while v<len(sousEnsPS[u]):
+						intersecMulti=intersection(intersecMulti,sequence[:i-1][sousEnsPS[u][v]])
+						v+=1
+					intersecMulti=intersection(sequence[i-1],intersecMulti)
+					if intersecMulti==' ':
+						intersecMulti=''
+					m = min(sousEnsPS[u])
+					kmax = tailleItemset(intersecMulti)
+					for v in range(1,j+1):
+						R[i][j] += pow(-1,len(sousEnsPS[u])+1)*T[m][j-v]*combin(kmax,v)
+				for v in range(min([tailleItemset(sequence[i-1]),j])+1):
+					T[i][j] += T[i-1][j-v]*combin(tailleItemset(sequence[i-1]),v)
+				T[i][j] -= R[i][j]
+		return T
+
+# number of subsequences (bis)
+def phi_k_Bis(sequence,k):
+	if k==0 or sequence==[]:
+		return [[1]]
+	else:
 		M=[]
 		nt=normeTabItemset(sequence)
 		k=min(k,nt)
