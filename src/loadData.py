@@ -57,11 +57,14 @@ delimiteurItemset='-1'
 #Transform the sequence into an array of itemsets
 def tableauItemset1(sequence,indiceClass):
 	k,p=1,0
-	if indiceClass>0:
-		k=+1 # fin de sequence
-	elif indiceClass==0:
-		p=1 #debut de sequence
-	sequence=sequence.split(delimiteurItemset+' ')
-	sequence=sequence[p:-k]
-	return sequence
+        if indiceClass>=0:
+            if indiceClass>0:
+                k=+1 # fin de sequence
+            elif indiceClass==0:
+                p=1 #debut de sequence
+            sequence=sequence.split(self.delimiteurItemset+' ')
+            sequence=sequence[p:-k]
+            return sequence
+        else:
+            return sequence.split(self.delimiteurItemset+' ')
 
