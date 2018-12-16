@@ -62,9 +62,9 @@ def tableauItemset1(sequence,indiceClass):
                 k=+1 # fin de sequence
             elif indiceClass==0:
                 p=1 #debut de sequence
-            sequence=sequence.split(self.delimiteurItemset+' ')
+            sequence=sequence.split(delimiteurItemset+' ')
             sequence=sequence[p:-k]
             return sequence
         else:
-            return sequence.split(self.delimiteurItemset+' ')
+            return sequence.split(delimiteurItemset+' ')
 
