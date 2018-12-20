@@ -190,7 +190,7 @@ def inclus(itemset1, itemset2):
 #Test if a pattern is a sub-sequence of a given sequence
 def EstSousSequence(sousSeq, sequence, indiceClass):
 	tab1=sousSeq.split(' -1 ')[:-1]
-	tab2=sequence.split(' -1 ')[:-1]
+	tab2=sequence.split(' -1 ')
 	#print(tab1),(tab2)
 	if len(tab1)>len(tab2):
 		return False
