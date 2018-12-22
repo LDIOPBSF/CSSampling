@@ -75,13 +75,13 @@ def creatArffFile(contenuBaseSequence, EnsSousSequence, indiceClass, relation,N,
 
 def recordSample(EnsSousSequence, N, tailleMax, utility, relation):
     tmps21=time.process_time()
-    arffPathDir = "Samples"
+    samplePathDir = "Samples"
     os.makedirs(arffPathDir, exist_ok=True)
     ficSample=""
     for s in EnsSousSequence:
         ficSample=ficSample+s+"-2\n"
       
-    with open(arffPathDir+'/'+utility+"_M"+str(tailleMax)+'_'+relation+'_N'+str(N)+'.txt', 'w') as fic:
+    with open(samplePathDir+'/'+utility+"_M"+str(tailleMax)+'_'+relation+'_N'+str(N)+'.txt', 'w') as fic:
         fic.write(ficSample)
     tmps22=time.process_time()-tmps21
     print ("Recording time = ",tmps22)
@@ -89,7 +89,7 @@ def recordSample(EnsSousSequence, N, tailleMax, utility, relation):
 
 def recordSampleWithFrequecy(contenuBaseSequence, EnsSousSequence, N, tailleMax, utility, relation):
     tmps21=time.process_time()
-    arffPathDir = "Samples."+utility
+    samplePathDir = "Samples."+utility
     os.makedirs(arffPathDir, exist_ok=True)
     subSeq = {}
     for s in EnsSousSequence:
@@ -101,7 +101,7 @@ def recordSampleWithFrequecy(contenuBaseSequence, EnsSousSequence, N, tailleMax,
     for s in subSeq.keys():
         freq = frequence(contenuBaseSequence, s)
         ficSample=ficSample+s+"-2"+"\t"+str(freq)+"\t"+str(subSeq[s])+"\n"
-    with open(arffPathDir+'/'+utility+"_M"+str(tailleMax)+'_'+relation+'_N'+str(N)+'.txt', 'w') as fic:
+    with open(samplePathDir+'/'+utility+"_M"+str(tailleMax)+'_'+relation+'_N'+str(N)+'.txt', 'w') as fic:
         fic.write(ficSample)
     tmps22=time.process_time()-tmps21
     print ("Recording time = ",tmps22)
