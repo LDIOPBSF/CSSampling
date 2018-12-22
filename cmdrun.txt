@@ -1,11 +1,4 @@
-To run CSSampling in one dataset :
-Run the terminal into the CSSampling folder
-#CSSampling.py Data\dataset N M indiceClass
+With Windows and Python 3
 
-N is the size of the sample
-M is the maximum norm
-
-if there is no class, then indiceClass=-1
-indiceClass is the index of the attribute to predict if it exists, else it takes -1. indiceClass=0 if the attribute is the first one
-Exemple :
-CSSampling.py Data\D100K5S2T6I.txt 10000 3 -1
+run into the project folder the following command
+directory_of_the_project\CSSampling\src>CSSampling.py
