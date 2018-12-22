@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/CSSampling.py=Utf-8
+encoding//src/pkg/cssamping/elementaryfunctions/Functions.py=Utf-8
+encoding//src/pkg/cssamping/preprocessing/LoadDataset.py=Utf-8
+encoding//src/pkg/cssamping/preprocessing/WeightedDataset.py=Utf-8
+encoding//src/pkg/cssamping/subSequence/SubSequence.py=Utf-8
