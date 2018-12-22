@@ -1,97 +1,61 @@
-
 #-*- coding:Utf-8 -*-
 
 __author__ = "DIOP Lamine BSF"
 
 import os
+import time
 import sys
 import math
 import csv
 import re
 import random
 import functools
-from sousSequence import *
-import time
-
-#It requires 4 arguments before running
-if len(sys.argv) < 4:
-	print( "Erreur d'entrée!")
-	sys.exit()
-
-############################## Some functions ############################
-
-#Sort two tables tab1 and tab2 as tab1[i]~tab2[i] for all i
-def triSelection(tab1,tab2):
-	tab=[]
-	tailleTab = len(tab1)
-	for i in range(tailleTab) : 
-		k= i
-		for j in range(i+1,tailleTab) :
-			if tab1[k] > tab1[j] :
-				k = j
-		tab1[k],tab1[i] = tab1[i],tab1[k]
-		tab2[k],tab2[i] = tab2[i],tab2[k]
-	tab.append(tab1),tab.append(tab2)
-	return tab
+from pkg.cssamping.subSequence.SubSequence import *
+from pkg.cssamping.preprocessing.LoadDataset import *
+from pkg.cssamping.preprocessing.WeightedDataset import *
+from pkg.cssamping.elementaryfunctions.Functions import *
 
 
-
-def compare(x,y):
-	if x<y: return -1
-	if x==y: return 0
-	if x>y: return 1
-
-def compareElem2(tuple1,tuple2):
-	return compare(tuple1[0],tuple2[0])
-
-def trier(matrice):
-	return sorted(matrice, key = functools.cmp_to_key(compareElem2))
-
-#################################### the main program ##########################
-
-baseSequence=sys.argv[1] #the complete path of the dataset
-k,N=0,int(sys.argv[2]) # N is the size of the sample
-tailleMax=int(sys.argv[3]) # the maximun norm constrain
-indiceClass=int(sys.argv[4]) # the index of the attribute to predict
-tailleMin = 1
-
-tmps21=time.clock()
-contenuBaseSequence=contenuDeMaBase(baseSequence) #loading the dataset
-result =maBasePonderee(contenuBaseSequence,tailleMax,indiceClass) #ponderation of the sequences database
-
-
-tmps22=time.clock()-tmps21
-print ("Duree pretraitement = "), tmps22
-	
-basePonderee,tabSigma=result[0],result[1]
-
-tmps21=time.clock()
-EnsSousSequence, EnsSequence=[],{}
-nombreDeRejet,c_accept, c_rejet=0,0,0
-
-tableauPhiSequence,tableauNbApparitionSequence=[],[]
-i=0
-
-# Sampling N patterns
-while i<N:
-	mesValParam=BSF(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonderee,c_accept, c_rejet,tabSigma, tailleMax,tailleMin, indiceClass)
-	nombreDeRejet,c_accept, c_rejet=mesValParam[0],mesValParam[1],mesValParam[2]
-	i+=1
-
-tmps22=time.clock()-tmps21
-print ("Duree tirage = "), tmps22
-tmps2=time.clock()-tmps1
-
-#output. We take the Samples as output folder by default
-relation=baseSequence.split("\\")[1].split(".")[0]
-ficSample=""
-for i in range(len(EnsSousSequence)):
-	ficSample=ficSample+EnsSousSequence[i]+"-2\n"
-
-print ("Taux d'acceptation reel : "),float(N)/(N+nombreDeRejet)
-with open('Samples/'+str(tailleMax)+'_'+relation+'_'+str(N)+'.txt', 'w') as fic:
-	fic.write(ficSample)
-print ("################## Duree totale d'execution D = "), tmps2
-			
-print ("************************************************* ")
+def main():
+    tailleMax = 3 # maximal norm, by default minimal norm m=1
+    indiceClass = -1 # negative value if no class
+    N=10000 # Sample size
+    datasets = ["D10K5S2T6I.txt", "D10K6S3T10I.txt", "BMS.txt", "SIGN.txt", "D100K5S2T6I.txt", "D100K6S2T6I.txt"]
+    for baseSequence in datasets:
+        contenuBaseSequence = LoadDataset("Data\\"+baseSequence, -1).dataset
+        relation=baseSequence.split(".")[0]
+        print(relation)
+        for tailleMax in [1,2,3,5,7,10]:
+            print("M = ",tailleMax)
+            for utility in ["freq"]:
+                tmps1=time.process_time()
+                print("utility",utility)
+            #************  Preprocessing
+                tmps21=time.process_time()
+                wData = WeightedDataset(contenuBaseSequence,tailleMax,indiceClass,utility)
+                basePonderee,tabSigma=wData.basePonderee,wData.tabSigma
+                tmps22=time.process_time()-tmps21
+                print ("Preprocessing time = ", tmps22)
+            #************  Sampling
+                for nbRep in range(1):
+                    tmps21=time.process_time()
+                    EnsSousSequence, EnsSequence=[],{}
+                    nombreDeRejet,c_accept, c_rejet=0,0,0
+                    tableauPhiSequence,tableauNbApparitionSequence=[],[]
+                    i=0
+                    while i<N:
+                        mesValParam=SubSequence(EnsSequence, EnsSousSequence,nombreDeRejet,contenuBaseSequence,basePonderee, c_accept, c_rejet,tabSigma,indiceClass,utility)
+                        nombreDeRejet,c_accept, c_rejet=mesValParam.nombreDeRejet,mesValParam.c_accept,mesValParam.c_rejet
+                        i+=1
+                    tmps22=time.process_time()-tmps21
+                    print ("Sampling time = ", tmps22)
+                #************  Ouput 
+                #   creatArffFile(contenuBaseSequence, EnsSousSequence, indiceClass,relation,N,tailleMax,nbRep,utility)
+                    recordSample(EnsSousSequence, N, tailleMax, utility, relation)
+                #   recordSampleWithFrequecy(contenuBaseSequence, EnsSousSequence, N, tailleMax, utility, relation)
+                tmps2=time.process_time()-tmps1
+                print ("################## Total execution time = ",tmps2)
+    
+if __name__ == "__main__":
+    main()
 
