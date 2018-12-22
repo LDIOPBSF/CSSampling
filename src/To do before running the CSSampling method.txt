@@ -1,2 +1,0 @@
-First, create a new folder named Samples in this repository.
-Second, copy the the folder Data that contains the datasets here. It's possible to add in the data folder any other sequential data set, but make sure that it respect the format used.
