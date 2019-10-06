@@ -76,7 +76,7 @@ def creatArffFile(contenuBaseSequence, EnsSousSequence, indiceClass, relation,N,
 def recordSample(EnsSousSequence, N, tailleMax, utility, relation):
     tmps21=time.process_time()
     samplePathDir = "Samples"
-    os.makedirs(arffPathDir, exist_ok=True)
+    os.makedirs(samplePathDir, exist_ok=True)
     ficSample=""
     for s in EnsSousSequence:
         ficSample=ficSample+s+"-2\n"
