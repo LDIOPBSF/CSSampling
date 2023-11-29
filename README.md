@@ -13,7 +13,7 @@ The CSSampling repository contains the materials concerning our paper : Sequenti
 - Data : contains the synthetic datasets built with the IBM Generator.
 - Samples : contains some results of the output sampling with the synthetic datasets
 - DistributionMotifsFrequence : contains the experimental results of the distribution of the patterns produced by CSSampling according to frequency
-- src : contains the python files of the project
+- src : (A generic version is available here https://github.com/LDIOPBSF/NUSSampling)
 - cmdrun.txt contains the command line to use when one wants to run the application
 
 # Abstract
